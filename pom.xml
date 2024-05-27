@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.holmesycl.java8</groupId>
+    <artifactId>java8-in-action</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>java8-in-action</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>4.13.2</junit.version>
+    </properties>
+
+    <modules>
+        <module>java8-basic</module>
+    </modules>
+
+    <!--子模块继承父模块的依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!--
+    dependencyManagement里只是声明依赖，并不实现引入，
+      因此子项目需要显式的声明需要用的依赖。
+      如果不在子项目中声明依赖，是不会从父项目中继承来的；
+      只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，
+      并且version和scope都读取自父pom;
+      另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本。
+      -->
+    <dependencyManagement>
+        <dependencies>
+
+        </dependencies>
+    </dependencyManagement>
+</project>
